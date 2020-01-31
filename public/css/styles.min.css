@@ -130,7 +130,7 @@ button:disabled {
 }
 
 .message a {
-	color: #0070CC
+	color: rgb(10, 12, 14)
 }
 
 .compose {
