@@ -37,7 +37,9 @@ io.on('connection',(socket)=>{
         socket.emit('roomData',{
             users: getUserByRoom(user.room)
         })
-        socket.broadcast.to(room).emit('message',{ text: user.username+' has joined',
+        socket.to(room).emit('message',{ 
+        user:'',
+        text: user.username+' has joined',
         createdAt: new Date().getTime()})
      callback()   
     })
