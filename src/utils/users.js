@@ -6,10 +6,12 @@ if(!username || !room)
     return {'error':'username and room details are required'}
 }
 const existingUser=users.find((user)=>{
+    console.log('existig user')
 return user.room===room && user.username===username;
 
 })
 if(existingUser){
+    console.log('existing user error')
     return {'error':'username or room name already exist'}
 }
 const user= {id,username,room}

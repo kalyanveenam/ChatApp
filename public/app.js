@@ -65,6 +65,9 @@ $locationButton.addEventListener('click',()=>{
     //console.log(navigator.geolocation)
 })
 socket.emit('join',{username,room},(error)=>{
+    
+    console.log('error',+error)
+
 if(error){
     alert(error)
     location.href='/'

@@ -20,11 +20,13 @@ io.on('connection',(socket)=>{
     // })
     socket.on('join',({username,room},callback)=>{
          const {user,error}=addUser(socket.id,username,room)
-       console.log('--')
-         console.log(user.username)
+       console.log('this is error')
+         console.log(error)
          if(error){
             return callback(error)
         }
+         console.log(user.username)
+       
         //console.log(username)
         socket.join(room)
         socket.emit('message',{
@@ -48,7 +50,7 @@ io.on('connection',(socket)=>{
     socket.on('value',(text)=>{
   const user=getUser(socket.id)
   console.log('message from user:')
-  console.log(user.room)
+  //console.log(user.room)
         console.log("text:"+text)
         io.to(user.room).emit('message',{  
             user:user.username,
