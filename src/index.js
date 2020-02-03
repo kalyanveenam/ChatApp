@@ -19,19 +19,14 @@ io.on('connection',(socket)=>{
     //     createdAt: new Date().getTime()
     // })
     socket.on('join',({username,room},callback)=>{
-       
+       room=room.trim().toLowerCase();
          const {user,error}=addUser(socket.id,username,room)
        console.log('this is error')
          console.log(error)
          if(error){
             return callback(error)
         }
-        app.get('/user',(req,res)=>{
-            res.send({
-                user:user.user,
-                room:user.room
-            });
-        })
+       
          console.log(user.username)
        
         //console.log(username)
@@ -76,11 +71,17 @@ io.on('connection',(socket)=>{
     })
     
     socket.on('disconnect',()=>{
+        
         console.log('before remove user')
         const user=removeUser(socket.id)
         console.log('tantanakaakaak')
+        console.log(user)
         if(user){
-        io.emit('message', ''+user.username+' has left')
+        io.emit('message', {
+            user:'Alert',
+            text:user[0].username+' has left the room ',
+            createdAt:new Date().getTime()
+        })
         }
     })
 })

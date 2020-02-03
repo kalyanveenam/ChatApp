@@ -9,6 +9,7 @@ const socket=io()
 let count=1;
 var text;
 const{username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
+
 autoScroll=()=>{
     $message.scrollTop
 }
@@ -28,6 +29,10 @@ socket.on('message',(message)=>{
 const getvalue = () =>
 {
      text = document.getElementById("input");
+
+     if($inputField.value=''){
+         alert('message cannot be empty')
+     }
    // console.log(text.value);
 socket.emit('value',text.value)
 $submitButton.setAttribute('disabled','disabled')
@@ -65,7 +70,7 @@ $locationButton.addEventListener('click',()=>{
     //console.log(navigator.geolocation)
 })
 socket.emit('join',{username,room},(error)=>{
-    
+
     console.log('error',+error)
 
 if(error){
