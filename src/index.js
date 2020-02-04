@@ -3,7 +3,7 @@ const path=require('path')
 const express=require('express')
 //const{generateMessage}=require('./utils/date')
 const {addUser,removeUser,getUser,getUserByRoom}=require('./utils/users')
-
+const users=require('./models/users')
 const port=process.env.PORT||3002
 const app= express()
 const server=http.createServer(app)
@@ -37,6 +37,7 @@ io.on('connection',(socket)=>{
             createdAt: new Date().getTime()
            
         })
+    
         console.log('before emit')
         socket.emit('roomData',{
             users: getUserByRoom(user.room)

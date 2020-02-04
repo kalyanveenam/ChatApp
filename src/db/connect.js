@@ -1,22 +1,27 @@
 const mongoose=require('mongoose')
-mongoose.connect('mongodb://127.0.0.1:27017/chatApp',{useNewUrlParser:true,
+const connection=mongoose.connect('mongodb://127.0.0.1:27017/chatApp',{useNewUrlParser:true,
 useCreateIndex:true
+},()=>{
+   console.log('connection is established ') 
 })
+// const users=mongoose.model('users',{
 
-const rooms=mongoose.model('rooms',{
+//    username:{
+//        type: String
+//    }
+// })
 
-    roomname:{
-        type: String
-    }
-})
 
-const room1=new rooms(
-    {
-    roomname: 'kalyan'
-    }
-)
-room1.save().then(()=>{
-console.log('connection is created sucessfully')    
-}).catch((error)=>{
-console.log(error)
-})
+
+// const user1=new users(
+//    {
+//    username: 'karthik'
+//    }
+// )
+// user1.save().then(()=>{
+// console.log('connection is created sucessfully')    
+// }).catch((error)=>{
+//    console.log(error)
+// })
+
+
