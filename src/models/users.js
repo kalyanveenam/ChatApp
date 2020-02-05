@@ -8,7 +8,11 @@ const users=mongoose.model('users',{
     },
     message:{
         type: String
-    }
+    },
+    room:{
+        type:String  
+      }
+    
 })
 
 

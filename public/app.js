@@ -1,7 +1,9 @@
+
 const $submitButton=document.getElementById('btn')
 const $inputField=document.getElementById('input')
 const $locationButton=document.querySelector('#send-location')
 const $message=document.querySelector('#msgtxt')
+const $savebutton=document.querySelector('#save')
 const message_template=document.querySelector('#message-template').innerHTML
 const location_template=document.querySelector('#location-template').innerHTML
 const sidebar_template=document.querySelector('#sidebar-template').innerHTML
@@ -10,15 +12,19 @@ let count=1;
 var text;
 const{username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 
+console.log('room is '+room);
 autoScroll=()=>{
     $message.scrollTop
 }
+
 socket.on('message',(message)=>{
     const html=Mustache.render(message_template,{
         user: message.user,
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm: a')
     })
+   
+console.log('room is '+room); 
     console.log(message)
      $message.insertAdjacentHTML('beforeend',html)
        document.getElementById('btn').removeAttribute('disabled')
@@ -36,6 +42,18 @@ $submitButton.setAttribute('disabled','disabled')
 $inputField.value='';
 $inputField.focus();
 }
+$savebutton.addEventListener('click',()=>{
+    console.log('clicked on save'+room)
+    fetch('/saveddata?room='+room+'').then((res)=>{
+res.json().then((data)=>{
+    location.href='/saveddata?room='+room+''
+    console.log(data)
+})
+
+    })
+   
+})
+
 
 $locationButton.addEventListener('click',()=>{
     $locationButton.setAttribute('disabled','disabled')
@@ -66,6 +84,7 @@ if(error){
     location.href='/'
 }
 })
+
 // socket.on('roomData',(data)=>{
 // console.log(data.users) 
 // var room=data.room

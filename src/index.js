@@ -17,7 +17,7 @@ const publicDirectoryPath=path.join(__dirname,'../public')
 app.use(express.static(publicDirectoryPath))
 app.use(routes);
 
-
+console.log('room'+global.roomName)
 io.on('connection',(socket)=>{
     console.log('connection is created sucessfully')
     // socket.emit('message',{
@@ -64,7 +64,8 @@ io.on('connection',(socket)=>{
         const user1=new userdata(
             {    
                 username:user.username,
-                message:text
+                message:text,
+                room:user.room
             }
         )
         user1.save().then(()=>{
@@ -75,6 +76,11 @@ io.on('connection',(socket)=>{
             text:text,
             createdAt:new Date().getTime()
         })
+   //save
+//    const saveddata = app.get('/saveddata',(req,res)=>{
+//     const data= userdata.find({'room':user.room}).then((data)=>{res.send(data)})
+//        res.send(data)
+//    })
     })
     socket.on('sendlocation',(data,callback)=>{
         console.log('location:'+data) 

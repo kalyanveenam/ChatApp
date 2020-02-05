@@ -1,10 +1,22 @@
+const http= require('http')
 const express=require('express')
 const userdata=require('../models/users')
+const users=require('../utils/users')
+
 
 const app= express()
+const server=http.createServer(app)
 //routes
+console.log(global.roomName);
 const saveddata = app.get('/saveddata',(req,res)=>{
-    const data= userdata.findById('5e398ee5cf2a137481e89a7a').then((data)=>{res.send(data)})
-      // res.send(data)
+    console.log('-----------------')
+    console.log(req.query)
+    const data= userdata.find({'room':req.query.room}).then((data)=>{
+        
+        
+        res.send(data)
+        console.log(data)
+    })
+
    })
 module.exports=saveddata;
