@@ -1,17 +1,23 @@
 const http= require('http')
 const path=require('path')
 const express=require('express')
+
+const userdata=require('./models/users')
+
 //const{generateMessage}=require('./utils/date')
 const {addUser,removeUser,getUser,getUserByRoom}=require('./utils/users')
-const users=require('./models/users')
 const port=process.env.PORT||3002
 const app= express()
+
 const server=http.createServer(app)
 const io= require('socket.io')(server)
+const routes=require('./routes/userdata')
 
 const publicDirectoryPath=path.join(__dirname,'../public')
 app.use(express.static(publicDirectoryPath))
-//onst message='welcome to chatapp';
+app.use(routes);
+
+
 io.on('connection',(socket)=>{
     console.log('connection is created sucessfully')
     // socket.emit('message',{
@@ -55,6 +61,15 @@ io.on('connection',(socket)=>{
   console.log('message from user:')
   //console.log(user.room)
         console.log("text:"+text)
+        const user1=new userdata(
+            {    
+                username:user.username,
+                message:text
+            }
+        )
+        user1.save().then(()=>{
+            console.log('user name is added to db')
+        }).catch('issue in adding user to db')
         io.to(user.room).emit('message',{  
             user:user.username,
             text:text,

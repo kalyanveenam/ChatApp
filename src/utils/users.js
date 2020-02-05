@@ -1,4 +1,4 @@
-const userdata=require('../models/users')
+
 
 users=[];
 
@@ -19,12 +19,7 @@ if(existingUser){
 }
 const user= {id,username,room}
 users.push(user)
-const user1=new userdata(
-    {username:user.username}
-)
-user1.save().then(()=>{
-    console.log('user name is added to db')
-}).catch('issue in adding user to db')
+
 console.log('-----')
 console.log(users)
 return {user};

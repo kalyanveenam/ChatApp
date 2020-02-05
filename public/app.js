@@ -30,24 +30,13 @@ const getvalue = () =>
 {
      text = document.getElementById("input");
 
-     if($inputField.value=''){
-         alert('message cannot be empty')
-     }
-   // console.log(text.value);
+  
 socket.emit('value',text.value)
 $submitButton.setAttribute('disabled','disabled')
 $inputField.value='';
 $inputField.focus();
 }
-// socket.on('data',(data)=>{
-  
-//      const html=Mustache.render(message_template,{
-//          message:data.text,
-//          createdAt:moment(data.createdAt).format('h:mm: a')
-//      })
-//      $message.insertAdjacentHTML('beforeend',html)
-//     console.log(data)
-// })
+
 $locationButton.addEventListener('click',()=>{
     $locationButton.setAttribute('disabled','disabled')
     navigator.geolocation.getCurrentPosition((position)=>{
@@ -67,7 +56,6 @@ $locationButton.addEventListener('click',()=>{
             console.log(data)
         })
     })
-    //console.log(navigator.geolocation)
 })
 socket.emit('join',{username,room},(error)=>{
 
