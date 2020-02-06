@@ -8,7 +8,7 @@ const userdata=require('./models/users')
 const {addUser,removeUser,getUser,getUserByRoom}=require('./utils/users')
 const port=process.env.PORT||3002
 const app= express()
-
+app.set('view engine','hbs')
 const server=http.createServer(app)
 const io= require('socket.io')(server)
 const routes=require('./routes/userdata')

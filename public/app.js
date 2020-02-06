@@ -1,4 +1,3 @@
-
 const $submitButton=document.getElementById('btn')
 const $inputField=document.getElementById('input')
 const $locationButton=document.querySelector('#send-location')
@@ -44,15 +43,16 @@ $inputField.focus();
 }
 $savebutton.addEventListener('click',()=>{
     console.log('clicked on save'+room)
-    fetch('/saveddata?room='+room+'').then((res)=>{
-res.json().then((data)=>{
-    location.href='/saveddata?room='+room+''
-    console.log(data)
-})
+     fetch('/saveddata').then((res)=>{
+
+       // res.json().then((data)=>{
+     location.href='/saveddata?room='+room+'';
+     console.log(data)
+ 
 
     })
    
-})
+
 
 
 $locationButton.addEventListener('click',()=>{
@@ -96,5 +96,4 @@ if(error){
 // }) 
 // document.querySelector('#sidebar').innerHTML=html;  
 // })
-
-//document.getElementById("#input").value;
+})
