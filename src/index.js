@@ -16,8 +16,6 @@ const routes=require('./routes/userdata')
 const publicDirectoryPath=path.join(__dirname,'../public')
 app.use(express.static(publicDirectoryPath))
 app.use(routes);
-
-console.log('room'+global.roomName)
 io.on('connection',(socket)=>{
     console.log('connection is created sucessfully')
     // socket.emit('message',{
@@ -25,6 +23,7 @@ io.on('connection',(socket)=>{
     //     createdAt: new Date().getTime()
     // })
     socket.on('join',({username,room},callback)=>{
+        console.log('username from join'+username)
        room=room.trim().toLowerCase();
          const {user,error}=addUser(socket.id,username,room)
        console.log('this is error')
@@ -38,8 +37,8 @@ io.on('connection',(socket)=>{
         //console.log(username)
         socket.join(room)
         socket.emit('message',{
-            user: 'Admin',
-            text:'Welcome',
+            user: 'hey!',
+            text:'Thanks for being here, will notify when others join!',
             createdAt: new Date().getTime()
            
         })

@@ -3,6 +3,7 @@ const $inputField=document.getElementById('input')
 const $locationButton=document.querySelector('#send-location')
 const $message=document.querySelector('#msgtxt')
 const $savebutton=document.querySelector('#save')
+const $messageform=document.querySelector('#message-form')
 const message_template=document.querySelector('#message-template').innerHTML
 const location_template=document.querySelector('#location-template').innerHTML
 const sidebar_template=document.querySelector('#sidebar-template').innerHTML
@@ -10,8 +11,6 @@ const socket=io()
 let count=1;
 var text;
 const{username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
-
-console.log('room is '+room);
 autoScroll=()=>{
     $message.scrollTop
 }
@@ -22,37 +21,52 @@ socket.on('message',(message)=>{
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm: a')
     })
-   
-console.log('room is '+room); 
-    console.log(message)
+
      $message.insertAdjacentHTML('beforeend',html)
        document.getElementById('btn').removeAttribute('disabled')
-    console.log(message)
     autoScroll()
 })
 
-const getvalue = () =>
-{
+    socket.emit('join',{username,room},(error)=>{
+    console.log('username->'+username)
+      console.log('error',+error)
+  
+  if(error){
+      alert(error)
+      location.href='/'
+  }
+  })
+  $submitButton.addEventListener('click',()=>{
+   
      text = document.getElementById("input");
 
-  
+  console.log(text.value)
 socket.emit('value',text.value)
 $submitButton.setAttribute('disabled','disabled')
 $inputField.value='';
 $inputField.focus();
-}
-$savebutton.addEventListener('click',()=>{
-    console.log('clicked on save'+room)
-     fetch('/saveddata').then((res)=>{
+socket.on('message',(message)=>{
+    const html=Mustache.render(message_template,{
+        user: message.user,
+        message: message.text,
+        createdAt: moment(message.createdAt).format('h:mm: a')
+    })
+//}
+// $savebutton.addEventListener('click',()=>{
+//     console.log('clicked on save'+room)
+//      fetch('/saveddata').then((res)=>{
 
-       // res.json().then((data)=>{
-     location.href='/saveddata?room='+room+'';
-     console.log(data)
+//        // res.json().then((data)=>{
+//      location.href='/saveddata?room='+room+'';
+//      console.log(data)
  
 
-    })
+//      })
+//     })
    
 
+
+})
 
 
 $locationButton.addEventListener('click',()=>{
@@ -75,15 +89,7 @@ $locationButton.addEventListener('click',()=>{
         })
     })
 })
-socket.emit('join',{username,room},(error)=>{
 
-    console.log('error',+error)
-
-if(error){
-    alert(error)
-    location.href='/'
-}
-})
 
 // socket.on('roomData',(data)=>{
 // console.log(data.users) 
@@ -96,4 +102,5 @@ if(error){
 // }) 
 // document.querySelector('#sidebar').innerHTML=html;  
 // })
-})
+//})
+  })
