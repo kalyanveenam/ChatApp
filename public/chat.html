@@ -2,11 +2,11 @@
     <head>
         <title>ChatApp</title>
         <link rel='icon' href="img/favicon.png">
-        <link rel='stylesheet' href="css/newStyles.css"/>
+        <link rel='stylesheet' href="css/styles.css"/>
     </head>
     <body>
 
-        <div class="chat">
+       
          <div class="chat__sidebar">
 
          </div>
@@ -15,7 +15,7 @@
             <div id='messages' class='chat__messages'></div>
              <div class='compose'>
                 <form id="message-form" >
-                    <input name='message' placeholder='type your message' type="text" id="input" required></input>
+                    <input name='message' placeholder='start typing here...' type="text" id="input" required></input>
                     <button id='btn'>send</button>
                 
                         </form>
@@ -24,9 +24,9 @@
                  </div>
           
          </div>
-        </div>
+       
 
-
+         <div class="chat">
 
    
 <div id='msgtxt'></div>
@@ -37,7 +37,7 @@
                 <span class='message__name'>{{user}}</span>
                 <span class='message__meta'>{{createdAt}}</span>
              </p>
-    <p>{{message}}</p>
+    <p class='message_data'>{{message}}</p>
         </div> 
     
     </script>
@@ -61,6 +61,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="./app.js"></script>
+</div>
 </body>
     
 </html>   

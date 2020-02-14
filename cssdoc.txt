@@ -1,0 +1,7 @@
+display: flex- displays all the divs in flex 
+max- height property sets max height of flex
+overflow:auto gives the auto scroll functionality
+use border property to set the border thickess
+USE BORDER radius to set the shape for thw border
+use margin to give space outside divs
+use padding to make contents inside div more spacious
