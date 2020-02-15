@@ -16,7 +16,7 @@ background:#333744;
     background-color: white;
     max-height: 350px;
     display: flex;
-    overflow-y: auto;
+    overflow-y: scroll;
   
     border: 1px solid white;
     padding: 20px;

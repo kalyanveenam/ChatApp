@@ -6,7 +6,7 @@ const userdata=require('./models/users')
 
 //const{generateMessage}=require('./utils/date')
 const {addUser,removeUser,getUser,getUserByRoom}=require('./utils/users')
-const port=process.env.PORT||3002
+const port=process.env.PORT||3000
 const app= express()
 app.set('view engine','hbs')
 const server=http.createServer(app)

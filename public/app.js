@@ -2,6 +2,7 @@ const $submitButton=document.getElementById('btn')
 const $inputField=document.getElementById('input')
 const $locationButton=document.querySelector('#send-location')
 const $message=document.querySelector('#msgtxt')
+const $slider=document.querySelector('#chat')
 const $savebutton=document.querySelector('#save')
 const $messageform=document.querySelector('#message-form')
 const message_template=document.querySelector('#message-template').innerHTML
@@ -12,7 +13,8 @@ let count=1;
 var text;
 const{username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 autoScroll=()=>{
-    $message.scrollTop
+    console.log('SCROLLING')
+    $slider.scrollTop=$slider.scrollHeight
 }
 
 socket.on('message',(message)=>{
