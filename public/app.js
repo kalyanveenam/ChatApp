@@ -1,4 +1,5 @@
 const $submitButton=document.getElementById('btn')
+
 const $inputField=document.getElementById('input')
 const $locationButton=document.querySelector('#send-location')
 const $message=document.querySelector('#msgtxt')
