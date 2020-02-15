@@ -17,6 +17,7 @@ autoScroll=()=>{
     $slider.scrollTop=$slider.scrollHeight
 }
 
+
 socket.on('message',(message)=>{
     const html=Mustache.render(message_template,{
         user: message.user,
