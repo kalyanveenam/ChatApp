@@ -42,7 +42,11 @@ socket.on('message',(message)=>{
    
      text = document.getElementById("input");
 
-  console.log(text.value)
+  console.log(text.value.length)
+  if(text.value.length==0){
+      alert('please enter a message to send!')
+  }
+  else{
 socket.emit('value',text.value)
 $submitButton.setAttribute('disabled','disabled')
 $inputField.value='';
@@ -53,23 +57,8 @@ socket.on('message',(message)=>{
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm: a')
     })
-//}
-// $savebutton.addEventListener('click',()=>{
-//     console.log('clicked on save'+room)
-//      fetch('/saveddata').then((res)=>{
-
-//        // res.json().then((data)=>{
-//      location.href='/saveddata?room='+room+'';
-//      console.log(data)
- 
-
-//      })
-//     })
-   
-
-
 })
-
+  }
 
 $locationButton.addEventListener('click',()=>{
     $locationButton.setAttribute('disabled','disabled')

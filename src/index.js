@@ -38,7 +38,7 @@ io.on('connection',(socket)=>{
         socket.join(room)
         socket.emit('message',{
             user: 'hey!',
-            text:'Thanks for being here, will notify when others join!',
+            text:'Welcome to chatpad! please wait while others join your room',
             createdAt: new Date().getTime()
            
         })

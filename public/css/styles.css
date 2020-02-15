@@ -13,7 +13,7 @@ background:#333744;
      color: gray;
  }
  .chat{
-    background-color: white;
+    background-color: #F7F7FA;
     max-height: 350px;
     display: flex;
     overflow-y: scroll;
@@ -24,7 +24,6 @@ background:#333744;
   left: 400px;
   top: 150px;
   width: 720px;
-    /* border-radius: 25px;  */
 }
  .message
 {
