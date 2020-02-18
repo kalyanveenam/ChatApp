@@ -1,13 +1,21 @@
 <html>
-    <head>
-        <title>ChatApp</title>
-        <link rel='icon' href="img/favicon.png">
-        <link rel='stylesheet' href="css/styles.min.css"/>
-    </head>
-    <body>
 
-     <p>this is paragraph {{user}}</p>
+<head>
+    <title>ChatApp</title>
+    <link rel='icon' href="img/favicon.png">
+    <link rel='stylesheet' href='css/styles.css' type="text/css" />
+    <base href="/">
+</head>
 
-    </body> 
-</html>  
-       
+<body>
+
+
+
+    <div class='schat'>{{#each this}}
+
+        <div> {{username}} : {{message}}</div>
+        {{/each}}
+    </div>
+</body>
+
+</html>

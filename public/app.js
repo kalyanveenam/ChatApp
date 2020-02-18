@@ -1,6 +1,7 @@
 const $submitButton=document.getElementById('btn')
-
+const $noteButton=document.querySelector('#notebtn')
 const $inputField=document.getElementById('input')
+const $savechat=document.getElementById('savechat')
 const $locationButton=document.querySelector('#send-location')
 const $message=document.querySelector('#msgtxt')
 const $slider=document.querySelector('#chat')
@@ -18,17 +19,29 @@ autoScroll=()=>{
     $slider.scrollTop=$slider.scrollHeight
 }
 
+$savechat.addEventListener('click',()=>{
+    window.location.href='/saveddata?room='+room+'';
+    // fetch('/saveddata?room='+room+'').then((res)=>{
+    //     console.log(res)
+    //     res.text().then((data)=>{
+    //         console.log(data)
 
+    //     })
+    // })
+    // console.log(room)
+    //i am here
+})
 socket.on('message',(message)=>{
     const html=Mustache.render(message_template,{
         user: message.user,
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm: a')
     })
-
+    
      $message.insertAdjacentHTML('beforeend',html)
        document.getElementById('btn').removeAttribute('disabled')
     autoScroll()
+
 })
 
     socket.emit('join',{username,room},(error)=>{
@@ -40,6 +53,9 @@ socket.on('message',(message)=>{
       location.href='/'
   }
   })
+  $submitButton.addEventListener('click',()=>{
+    console.log('clicked')
+})
   $submitButton.addEventListener('click',()=>{
    
      text = document.getElementById("input");
@@ -83,6 +99,9 @@ $locationButton.addEventListener('click',()=>{
     })
 })
 
+
+    
+  
 
 // socket.on('roomData',(data)=>{
 // console.log(data.users) 

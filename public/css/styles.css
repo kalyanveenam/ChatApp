@@ -71,3 +71,11 @@ background:#333744;
     color: white;
     font-family:Courier New, monospace;
 }
+.schat{
+display: flex;
+flex-direction: column;
+max-height: 100px;
+overflow-y: scroll;
+color: chartreuse;
+border: 1px solid white;
+}

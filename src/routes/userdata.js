@@ -11,20 +11,24 @@ const saveddata = app.get('/saveddata',(req,res)=>{
     console.log('-----------------')
     console.log(req.query)
     const data2= userdata.find({'room':req.query.room}).then((data)=>{
-        console.log(data2)
-    })
-    res.render('room',{
-        user: 'kalyan'
-    })  
+         for(var i=0;i<data.length;i++)
+  {
+        console.log(data[i].message)
+       
+  }
+  res.render('room',data);
+    
+       })
+    
 
     
-     const data= userdata.find({'room':req.query.room}).then((data)=>{
+   //  const data= userdata.find({'room':req.query.room}).then((data)=>{
         
-  
+       
     //   //  res.send(data)
     //  
     // })
 
    })
-})
+
 module.exports=saveddata;
