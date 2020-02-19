@@ -11,11 +11,7 @@ const saveddata = app.get('/saveddata',(req,res)=>{
     console.log('-----------------')
     console.log(req.query)
     const data2= userdata.find({'room':req.query.room}).then((data)=>{
-         for(var i=0;i<data.length;i++)
-  {
-        console.log(data[i].message)
-       
-  }
+ 
   res.render('room',data);
     
        })

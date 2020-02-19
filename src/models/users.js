@@ -12,7 +12,7 @@ const users=mongoose.model('users',{
     room:{
         type:String  
       }
-    
+   
 })
 
 

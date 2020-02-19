@@ -9,11 +9,14 @@
 
 <body>
 
-
+<h2 class="tit">ChatPad</h2>
 
     <div class='schat'>{{#each this}}
-
-        <div> {{username}} : {{message}}</div>
+        <div class='message'>
+        <span class='message__name'>{{username}}</span>
+         <p class='message_data'>{{message}}</p>
+        {{!-- <div> {{username}} : {{message}}</div> --}}
+        </div>
         {{/each}}
     </div>
 </body>

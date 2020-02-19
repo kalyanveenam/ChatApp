@@ -72,10 +72,24 @@ background:#333744;
     font-family:Courier New, monospace;
 }
 .schat{
+    background-color: white;
+    padding: 20px;
 display: flex;
 flex-direction: column;
-max-height: 100px;
+max-height: 300px;
 overflow-y: scroll;
 color: chartreuse;
 border: 1px solid white;
+position: absolute;
+left: 400px;
+top: 150px;
+width: 720px;
+}
+.tit{
+    font-family: cursive;
+    color: white;
+    left: 400px;
+    position: absolute;
+left: 400px;
+font-size: 50px;
 }

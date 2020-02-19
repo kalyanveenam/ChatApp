@@ -5,3 +5,16 @@ use border property to set the border thickess
 USE BORDER radius to set the shape for thw border
 use margin to give space outside divs
 use padding to make contents inside div more spacious
+
+
+mongodb production deployment:
+
+1. open mongodb atlas in browser(atlas is crated by mongodb community)
+2. download
+3.register and click on new cluster(kalyancv096@gmail.com, Welcome@1234)
+4.click on connect button(throws an error)
+5.whitelist IO address by choosing add different IP Adresss
+6.Also provide username and password to connect to db
+7. in the next page choose mongodb compass and download it(compass is similar to robo3t)
+8.connect to prod db by providing url in popup 
+

@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express')
 const userdata = require('./models/users')
 const { addUser, removeUser, getUser, getUserByRoom } = require('./utils/users')
-const port = process.env.PORT || 3000
+const port = process.env.PORT 
 const app = express()
 app.set('view engine', 'hbs')
 const server = http.createServer(app)
