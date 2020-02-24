@@ -12,13 +12,15 @@
 <h2 class="tit">ChatPad</h2>
 
     <div class='schat'>{{#each this}}
+        {{#if message}}
         <div class='message'>
         <span class='message__name'>{{username}}</span>
          <p class='message_data'>{{message}}</p>
-        {{!-- <div> {{username}} : {{message}}</div> --}}
+       
         </div>
+        {{/if}}
         {{/each}}
-    </div>
+    </div> 
 </body>
 
 </html>

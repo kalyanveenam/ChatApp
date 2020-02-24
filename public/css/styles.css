@@ -14,7 +14,7 @@ background:#333744;
  }
  .chat{
     background-color: #F7F7FA;
-    max-height: 350px;
+    max-height: 550px;
     display: flex;
     overflow-y: scroll;
   
