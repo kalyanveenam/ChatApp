@@ -15,7 +15,7 @@ let count=1;
 var text;
 const{username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 autoScroll=()=>{
-    console.log('SCROLLING')
+   
     $slider.scrollTop=$slider.scrollHeight
 }
 
