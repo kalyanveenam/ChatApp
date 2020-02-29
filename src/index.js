@@ -11,9 +11,16 @@ const io = require('socket.io')(server)
 const routes = require('./routes/userdata')
 
 const publicDirectoryPath = path.join(__dirname, '../public')
+
 app.use(express.static(publicDirectoryPath))
 app.use(routes);
 
+
+// localhost3000- login page
+//TODO:(action->http://localhost:3000/chat?username=hema&room=room1)//hbs 
+// use socketio in hbs 
+//hsb->render old message and live chat
+//sync ()
 
 io.on('connection', (socket) => {
     console.log('connection is created sucessfully')
