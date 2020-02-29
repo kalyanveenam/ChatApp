@@ -24,7 +24,10 @@ app.use(routes);
 
 io.on('connection', (socket) => {
     console.log('connection is created sucessfully')
-
+    socket.on('msg',(data)=>{
+        console.log('kikikikikikikiki')
+        console.log(data)
+    })
     socket.on('join', ({ username, room }, callback) => {
         console.log('username from join' + username)
         room = room.trim().toLowerCase();
@@ -34,9 +37,9 @@ io.on('connection', (socket) => {
         if (error) {
             return callback(error)
         }
-
+ 
         console.log(user.username)
-
+        
         //console.log(username)
         socket.join(room)
         socket.emit('message', {

@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
 const saveddata = app.get('/saveddata',(req,res)=>{
     console.log('-----------------')
     console.log(req.query)
-    const data2= userdata.find({'room':'room1'}).then((data)=>{
+    const data2= userdata.find({'room':req.query.room}).then((data)=>{
  console.log('room data--- from db---')
  console.log(data.length)
  //res.send(data)

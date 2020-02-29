@@ -13,13 +13,14 @@
                 <h1>JOIN</h1>
         <form action="/saveddata">
         <label>Display name</label>
-        <input type="text" name="username" placeholder="Display name" required>
+        <input type="text" name="username" placeholder="Display name" id='username' required>
         <label>Room name</label>
-        <input type="text" name="room" placeholder="Room" required>
+        <input type="text" name="room" placeholder="Room" id='passcode' required>
         <button id='join' >Join</button>
         </form>
     </div>
 </div>
+<script src="/socket.io/socket.io.js"></script>
     <script src="./clientapp.js"></script>
 </body>
 
