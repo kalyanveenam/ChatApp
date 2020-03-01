@@ -28,6 +28,16 @@ io.on('connection', (socket) => {
     socket.on('message',(data)=>{
         console.log('from client2')
         console.log(data)
+        const user1 = new userdata(
+                    {
+                        username: username,
+                        message: data.user,
+                        room: room
+                    }
+                )
+                user1.save().then(() => {
+                    console.log('user name is added to db')
+                                   }).catch('issue in adding user to db')
     })
     // socket.on('join', ({ username, room }, callback) => {
     //     console.log('username from join' + username)
