@@ -4,14 +4,24 @@
     <title>ChatApp</title>
     <link rel='icon' href="img/favicon.png">
     <link rel='stylesheet' href='css/styles.css' type="text/css" />
+   
     <base href="/">
+      
 </head>
-
 <body>
+
 
     <input type="text" name="snd" placeholder="type your message here" id='message' required>
     <button id='send' >send</button>
 
+<template id="cat-list-template">
+  {{#each cats}}
+    <div class="cat">
+      <h1>{{name}}</h1>
+      <p>Age: {{age}}</p>
+    </div>
+  {{/each}}
+</template>
 <h2 class="tit">ChatPad</h2>
 
     <div class='schat'>{{#each this}}
@@ -23,9 +33,16 @@
         </div>
         {{/if}}
         {{/each}}
-    </div> 
+    </div>
+    <script>
+    var imported = document.createElement('script');
+imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js';
+document.head.appendChild(imported);
+</script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./clientapp2.js"></script>
+
+ 
 </body>
 
 </html>

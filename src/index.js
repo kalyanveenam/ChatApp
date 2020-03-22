@@ -38,7 +38,12 @@ io.on('connection', (socket) => {
                 user1.save().then(() => {
                     console.log('user name is added to db')
                                    }).catch('issue in adding user to db')
+                                   io.emit('clientdata',{username,room,data})
+                                   
     })
+    
+     
+   
     // socket.on('join', ({ username, room }, callback) => {
     //     console.log('username from join' + username)
     //     room = room.trim().toLowerCase();
